@@ -89,7 +89,7 @@ func TestGetApiKeyFail(t *testing.T) {
 
 		header := req.Header
 		_, err := GetAPIKey(header)
-		if !errors.Is(actualErrors[0], err) || !errors.Is(actualErrors[1], err) {
+		if !errors.Is(actualErrors[0], err) && !errors.Is(actualErrors[1], err) {
 			t.Errorf("%v is not the correct error", err)
 			continue
 		}
