@@ -35,4 +35,7 @@ jobs:
         run: 'gcloud info'
 
       - name: Build and push Docker image
-        run: gcloud builds submit --tag europe-southwest1-docker.pkg.dev/notely-416919/notely-ar-repo/notely:latest --region us-central1 --allow-unauthenticated --project notely-416919 --max-instances
+        run: gcloud builds submit --tag europe-southwest1-docker.pkg.dev/notely-416919/notely-ar-repo/notely:latest .
+
+      - name: Build to Cloud Run
+        run: gcloud run deploy notely --image europe-southwest1-docker.pkg.dev/notely-416919/notely-ar-repo/notely:latest --region us-central1 --allow-unauthenticated --project notely-416919 --max-instances 4
